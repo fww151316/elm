@@ -38,9 +38,8 @@
               theme="round"
               button-size="22"
               :show-minus="f"
-              default-value
               min
-              @click.native="xian"
+             @click.native="xian"
               disable-input
             />
           </div>
@@ -65,11 +64,10 @@
           </span>
           <div class="jia">
             <van-stepper
-              v-model="value"
+              v-model="value1"
               theme="round"
               button-size="22"
-              :show-minus="f"
-              default-value
+              :show-minus="f1"
               min
               @click.native="xian"
               disable-input
@@ -95,11 +93,10 @@
           </span>
           <div class="jia">
             <van-stepper
-              v-model="value"
+              v-model="value2"
               theme="round"
               button-size="22"
-              :show-minus="f"
-              default-value
+              :show-minus="f2"
               min
               @click.native="xian"
               disable-input
@@ -125,14 +122,13 @@
           </span>
           <div class="jia">
             <van-stepper
-              v-model="value"
+              v-model="value3"
               theme="round"
               button-size="22"
-              :show-minus="f"
-              default-value
-              min
+              :show-minus="f3"
+              min="0"
               @click.native="xian"
-              disable-input
+              disable-input 
             />
           </div>
         </div>
@@ -151,7 +147,13 @@ export default {
   data() {
     return {
       value: "",
-      f: false
+      value1: "",
+      value2: "",
+      value3: "",
+      f: false,
+      f1: false,
+      f2: false,
+      f3: false,
     };
   },
   created() {
@@ -166,10 +168,31 @@ export default {
   methods: {
     // 方法
     xian() {
-      this.f = true;
+      
       if (this.value === 0) {
         this.f = false;
+      }else{
+        this.f = true;
       }
+     
+      if (this.value1 === 0) {
+        this.f1 = false;
+      }else{
+         this.f1 = true;
+      }
+      
+      if (this.value2 === 0) {
+        this.f2 = false;
+      }else{
+        this.f2 = true;
+      }
+      
+      if (this.value3 === 0) {
+        this.f3 = false;
+      }else{
+        this.f3 = true;
+      }
+      
     }
   },
   mounted() {
@@ -242,4 +265,5 @@ li {
 .kong {
   height: 60px;
 }
+
 </style>

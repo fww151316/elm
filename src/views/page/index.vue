@@ -23,13 +23,32 @@
     <div class="kong2"></div>
     <router-view></router-view>
     <div class="footer">
-      <div class="car">
-          shedx
-      </div>
-      <span>￥<b>0</b></span>
+      <div class="car" @click="xian">购物车</div>
+      <span>
+        ￥
+        <b>0</b>
+      </span>
       <i>另需配送费￥4元</i>
-      <p>￥<b>20</b>起送</p>
+      <p>
+        ￥
+        <b>20</b>起送
+      </p>
     </div>
+
+    <van-overlay :show="show">
+      <div class="wrapper" @click.self="shi">
+        <div class="block">
+          <h3>购物车</h3>
+          <ul>
+            <li><i>莲子核桃黑米粥</i><van-stepper v-model="value" theme="round" button-size="22" disable-input /></li>
+            <li><i>莲子核桃黑米粥</i><van-stepper v-model="value" theme="round" button-size="22" disable-input /></li>
+            <li><i>莲子核桃黑米粥</i><van-stepper v-model="value" theme="round" button-size="22" disable-input /></li>
+            <li><i>莲子核桃黑米粥</i><van-stepper v-model="value" theme="round" button-size="22" disable-input /></li>
+        
+          </ul>
+        </div>
+      </div>
+    </van-overlay>
   </div>
 </template>
 
@@ -40,7 +59,10 @@ export default {
   },
   name: "index",
   data() {
-    return {};
+    return {
+      show: false,
+      value:''
+    };
   },
   created() {
     // 实例被创建之后执行代码
@@ -53,6 +75,12 @@ export default {
   },
   methods: {
     // 方法
+    xian() {
+      this.show = true;
+    },
+    shi() {
+      this.show = false;
+    }
   },
   mounted() {
     // 页面进入时加载内容
@@ -102,7 +130,7 @@ export default {
     font-size: 13px;
   }
 }
-span{
+span {
   display: inline-block;
   height: 50px;
   width: 33%;
@@ -111,10 +139,10 @@ span{
   font-size: 16px;
   font-weight: 900;
 }
-.router-link-exact-active{
+.router-link-exact-active {
   color: rgb(248, 85, 9);
 }
-.footer{
+.footer {
   display: flex;
   width: 100%;
   height: 60px;
@@ -122,7 +150,8 @@ span{
   position: fixed;
   bottom: 0;
   color: #fff;
-  .car{
+  z-index: 2;
+  .car {
     width: 60px;
     height: 60px;
     border-radius: 50%;
@@ -133,17 +162,17 @@ span{
     text-align: center;
     line-height: 60px;
   }
-  span{
+  span {
     line-height: 60px;
     font-size: 18px;
     margin-left: 35px;
   }
-  i{
+  i {
     font-size: 14px;
     line-height: 60px;
     margin-left: -20px;
   }
-  p{
+  p {
     width: 100px;
     background: rgb(87, 87, 85);
     height: 60px;
@@ -154,16 +183,42 @@ span{
     font-size: 16px;
   }
 }
-.kong{
+.kong {
   height: 130px;
 }
-.mu{
+.mu {
   position: fixed;
   width: 100%;
   background: #fff;
   z-index: 2;
 }
-.kong2{
+.kong2 {
   height: 50px;
+}
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.block {
+  width: 100%;
+  min-height: 120px;
+  background-color: #fff;
+  position: absolute;
+  bottom: 70px;
+  h3 {
+    margin: 10px 0 10px 10px;
+  }
+  li{
+    display: flex;
+    font-size: 16px;
+    line-height: 30px;
+    i{
+      margin: 0 150px 0 10px;
+    }
+  }
 }
 </style>
